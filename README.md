@@ -2,6 +2,18 @@
 
 A modern web application powered by the Django framework, integrating with the OpenAI API to craft advanced text content tailored to specific tones and applications.
 
+## Quick start
+
+Experience the application: [Magiczne Pióro](https://magiczne-pioro.0xdadulin.repl.co/)
+
+**Note**: Since the application is hosted on Replit, there might be a slight 5-15 second delay upon first access due to server initialization.
+
+### Video Presentation
+
+Watch a brief video presentation of the application:
+
+[Magiczne Pióro Video Presentation](https://www.loom.com/share/dbab322be3db4101b0aacec06440c4b7)
+
 ## Core Features
 
 - **OpenAI Integration**: Generate high-quality text content based on specified tones and applications.
@@ -17,11 +29,7 @@ A modern web application powered by the Django framework, integrating with the O
 - Plotly (for data visualization)
 - python-dotenv (for secure environment management)
 
-## Get Started
 
-Experience the application: [Magiczne Pióro](https://magiczne-pioro.0xdadulin.repl.co/)
-
-**Note**: Since the application is hosted on Replit, there might be a slight 5-15 second delay upon first access due to server initialization.
 
 ## Issues & Contributions
 

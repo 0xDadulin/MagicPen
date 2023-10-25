@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load crispy_forms_tags %}
+<style>.asteriskField {
+    display: none;
+}
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Edytuj ulepszony tekst</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                        <a href="{% url 'ulepszony_tekst_detail' tekst_id=ulepszony_tekst.id %}" class="btn btn-secondary">Anuluj</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

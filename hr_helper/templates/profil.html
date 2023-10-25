@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+    .container-fluid {
+        padding-left: 0;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    #content {
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Lewa kolumna z zakładkami -->
+        <div class="col-md-2 flex-column py-3 px-0" style="background-color: #f8f9fa; border-right: 1px solid #ccc; height: calc(100vh - 50px); position: sticky; top: 50px;">
+            <ul class="nav flex-column">
+                <li class="nav-item my-2 mb-2 border-bottom">
+                    <a class="nav-link" href="#" id="zuzycie-tab"><i class="bi bi-bar-chart-fill me-2"></i>🔋 Zużycie</a>
+                </li>
+                <li class="nav-item my-2 mb-2 border-bottom">
+                    <a class="nav-link" href="#" id="statystyki-tab"><i class="bi bi-pie-chart-fill me-2"></i>📊 Statystyki</a>
+                </li>
+                <li class="nav-item my-2 mb-2 border-bottom">
+                    <a class="nav-link" href="#" id="zarzadzanie-profilem-tab"><i class="bi bi-gear-fill me-2"></i>🔧 Ustawienia</a>
+                </li>
+                <li class="nav-item my-2 mb-2 border-bottom">
+                    <a class="nav-link" href="#" id="nagrody-tab"><i class="bi bi-award-fill me-2"></i>🏆 Nagrody</a>
+                </li>
+                <li class="nav-item my-2 mb-2 border-bottom">
+                    <a class="nav-link" href="#" id="afiliacja-tab"><i class="bi bi-handshake-fill me-2"></i>🤝 Afiliacja</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Prawa kolumna z pustą przestrzenią -->
+        <div class="col-md-10 py-3 px-4" id="content">
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            {{ wykres|safe }}
+            <!-- Zaoszczędzone zasoby -->
+            <div class="container">
+                <h2 class="mt-5">Twoja podróż z Magicznym piórem</h2>
+                <p class="lead">Uwielbiamy, jak produktywne są Twoje sesje korzystania z aplikacji i nie możemy się
+                    doczekać, aby uczynić je jeszcze ciekawszymi. Oto niektóre statystyki z Twojego dotychczasowego
+                    korzystania:</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-primary mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-clock"></i> Zaoszczędzony czas</h5>
+                                <p class="card-text display-4">{{zaoszczedzony_czas}} godzin</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-primary mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-money-bill-wave"></i> Zaoszczędzone pieniądze
+                                </h5>
+                                <p class="card-text display-4">{{zaoszczedzone_pieniadze}} zł</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Statystyki użycia zastosowań -->
+            <div class="container">
+                <h2 class="mt-5">Statystyki zastosowań</h2>
+                <ul class="list-group mt-4">
+                    {% for usage in usages %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ usage.name }}
+                        <span class="badge bg-primary rounded-pill">{{ usage.count }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

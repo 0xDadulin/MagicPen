@@ -1,0 +1,24 @@
+<!-- ulepszony_tekst.html -->
+{% extends 'base.html' %}
+
+
+{% block body %}
+  <div class="container">
+    <h2 class="my-4">{{ ulepszony_tekst.zastosowanie }}</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <p>{{ ulepszony_tekst.ulepszony_tekst|safe }}</p>
+          </div>
+          <ul>
+              <li>ID: {{ulepszony_tekst.id}}</li>
+              <li>Liczba słów: {{ ulepszony_tekst.liczba_slow }}</li>
+              <li>Liczba tokenów: {{ ulepszony_tekst.tokens }}</li>
+          </ul>
+        </div>
+        <a href="{% url 'ulepszony_tekst_update' tekst_id=ulepszony_tekst.id %}" class="btn btn-primary mt-3">Edytuj</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

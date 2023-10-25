@@ -1,0 +1,153 @@
+  {% extends 'base.html' %}
+  {% block body %}
+
+  <style>
+      .small-step {
+          padding: 1rem;
+          border: 1px solid #e9ecef;
+          border-radius: 10px;
+          transition: 0.3s;
+      }
+
+      .small-step:hover {
+          background-color: #f8f9fa;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transform: translateY(-5px);
+      }
+  </style>
+
+  <!-- Jumbotron -->
+  <section class="jumbotron text-center bg-light py-5">
+      <div class="container">
+          <h1 class="display-4">Twórz lepsze treści <b>10x</b> szybciej</h1>
+          <h2 class="mb-4"><span class="text-primary" id="application-uses"></span></h2>
+          <p class="lead">Nasz asystent do pisania oparty na sztucznej inteligencji pomoże Ci tworzyć treści o wysokiej
+              jakości w zaledwie kilka sekund i za ułamek kosztów!</p>
+          <a href="{% url 'generuj-opis' %}" class="btn btn-lg btn-primary">Rozpocznij korzystanie</a>
+      </div>
+  </section>
+
+  <section class="container my-5">
+      <div class="row">
+          <div class="col-md-3">
+              <div class="card h-100">
+                  <div class="card-body">
+                      <h5 class="card-title font-weight-bold">Personalizacja tonu</h5>
+                      <p class="card-text">Dostosuj styl i ton tekstu do swoich potrzeb - formalny, nieformalny,
+                          przekonujący czy informacyjny.</p>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Dowiedz się więcej
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="card h-100">
+                  <div class="card-body">
+                      <h5 class="card-title font-weight-bold">Optymalizacja czytelności</h5>
+                      <p class="card-text">Ulepszaj swoje teksty, aby stały się bardziej przejrzyste i zrozumiałe dla
+                          odbiorców.</p>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Dowiedz się więcej
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="card h-100">
+                  <div class="card-body">
+                      <h5 class="card-title font-weight-bold">Korekta gramatyczna i stylistyczna</h5>
+                      <p class="card-text">Wyeliminuj błędy gramatyczne, ortograficzne i stylistyczne, aby twój tekst
+                          był profesjonalny i bezbłędny.</p>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Dowiedz się więcej
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="card h-100">
+                  <div class="card-body">
+                      <h5 class="card-title font-weight-bold">Generowanie podsumowań</h5>
+                      <p class="card-text">Skróć długie teksty, zachowując ich kluczowe informacje, dzięki
+                          automatycznemu generowaniu podsumowań.</p>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Dowiedz się więcej
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="container my-5 small-section">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h2>Zaoszczędź ⏰ i 💰 pisząc treści, które <b>konwertują</b></h2>
+          </div>
+      </div>
+      <div class="row mt-5">
+          <div class="col-md-4 text-center">
+              <div class="small-step">
+                  <h3 class="font-weight-bold">1️⃣</h3>
+                  <h5 class="font-weight-bold">Wybierz zastosowanie</h5>
+                  <p>W aplikacji znajdziesz wiele opcji zastosowań, które pomogą Ci dopasować narzędzie do Twoich potrzeb.</p>
+              </div>
+          </div>
+          <div class="col-md-4 text-center">
+              <div class="small-step">
+                  <h3 class="font-weight-bold">2️⃣</h3>
+                  <h5 class="font-weight-bold">Dodaj trochę tekstu do kontekstu</h5>
+                  <p>Podaj nieco informacji na temat treści, którą chciałbyś wygenerować, aby uzyskać bardziej spersonalizowane wyniki.</p>
+              </div>
+          </div>
+          <div class="col-md-4 text-center">
+              <div class="small-step">
+                  <h3 class="font-weight-bold">3️⃣</h3>
+                  <h5 class="font-weight-bold">Magiczne pióro automatycznie dla Ciebie pisze</h5>
+                  <p>Po wprowadzeniu danych nasza aplikacja korzysta z technologii OpenAI, aby stworzyć unikalną i interesującą treść.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const applicationUses = [
+            'Opis produktu',
+            'Artykuł',
+            'Recenzja',
+            'Pomysły na artykuł na bloga',
+            'Nazwa dla firmy/projektu',
+            'Pomysły na firmę',
+            'Wezwanie do działania',
+            'List motywacyjny',
+            'Email',
+            'Reklama na FB, IG, LinkedIn itp.',
+            'Pytania do wywiadu',
+            'Opis oferty pracy',
+            'Generator słów kluczowych/tagów',
+            'Pomysły na posty na social media',
+            'Opis profilu (bio)',
+            'Pytania i odpowiedzi (Q&A)',
+            'Odpowiedz na recenzje/wiadomości',
+            'SEO meta tytuł',
+            'SEO meta opis',
+            'Tekst piosenki',
+            'Zaświadczenie/recenzja',
+            'YT - opis kanału',
+            'YT - opis filmu',
+            'YT - pomysły na film'
+          ];
+          const options = {
+              strings: applicationUses,
+              typeSpeed: 40,
+              backSpeed: 10,
+              backDelay: 650,
+              loop: true
+          };
+          const typed = new Typed('#application-uses', options);
+      });
+  </script>
+
+  {% endblock %}
